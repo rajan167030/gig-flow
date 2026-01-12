@@ -1,50 +1,6 @@
 import { create } from "zustand"
 
-export interface User {
-  id: string
-  name: string
-  email: string
-  role: "client" | "freelancer" | null
-  budget?: number
-}
-
-export interface Gig {
-  id: string
-  title: string
-  description: string
-  budget: number
-  clientId: string
-  clientName: string
-  status: "open" | "assigned" | "completed"
-  bidsCount: number
-  createdAt: string
-}
-
-export interface Bid {
-  id: string
-  gigId: string
-  freelancerId: string
-  freelancerName: string
-  amount: number
-  message: string
-  status: "pending" | "hired" | "rejected"
-  createdAt: string
-}
-
-interface AuthStore {
-  user: User | null
-  gigs: Gig[]
-  bids: Bid[]
-  login: (email: string, name: string) => void
-  logout: () => void
-  postGig: (title: string, description: string, budget: number) => void
-  submitBid: (gigId: string, amount: number, message: string) => void
-  hireBidder: (gigId: string, bidId: string) => void
-  deleteGig: (gigId: string) => void
-}
-
-// Mock data
-const INITIAL_GIGS: Gig[] = [
+const INITIAL_GIGS = [
   {
     id: "1",
     title: "Build a React Dashboard",
@@ -80,7 +36,7 @@ const INITIAL_GIGS: Gig[] = [
   },
 ]
 
-const INITIAL_BIDS: Bid[] = [
+const INITIAL_BIDS = [
   {
     id: "bid-1",
     gigId: "1",
@@ -113,12 +69,12 @@ const INITIAL_BIDS: Bid[] = [
   },
 ]
 
-export const useAuthStore = create<AuthStore>((set) => ({
+export const useAuthStore = create((set) => ({
   user: null,
   gigs: INITIAL_GIGS,
   bids: INITIAL_BIDS,
 
-  login: (email: string, name: string) =>
+  login: (email, name) =>
     set({
       user: {
         id: `user-${Date.now()}`,
@@ -130,10 +86,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
   logout: () => set({ user: null }),
 
-  postGig: (title: string, description: string, budget: number) =>
+  postGig: (title, description, budget) =>
     set((state) => {
       if (!state.user) return state
-      const newGig: Gig = {
+      const newGig = {
         id: `gig-${Date.now()}`,
         title,
         description,
@@ -147,10 +103,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
       return { gigs: [...state.gigs, newGig] }
     }),
 
-  submitBid: (gigId: string, amount: number, message: string) =>
+  submitBid: (gigId, amount, message) =>
     set((state) => {
       if (!state.user) return state
-      const newBid: Bid = {
+      const newBid = {
         id: `bid-${Date.now()}`,
         gigId,
         freelancerId: state.user.id,
@@ -164,12 +120,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
       return { bids: [...state.bids, newBid], gigs: updatedGigs }
     }),
 
-  hireBidder: (gigId: string, bidId: string) =>
+  hireBidder: (gigId, bidId) =>
     set((state) => {
-      // Mark the gig as assigned
       const updatedGigs = state.gigs.map((gig) => (gig.id === gigId ? { ...gig, status: "assigned" } : gig))
 
-      // Mark the hired bid as hired, and all other bids for this gig as rejected
       const updatedBids = state.bids.map((bid) => {
         if (bid.id === bidId) {
           return { ...bid, status: "hired" }
@@ -183,7 +137,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
       return { gigs: updatedGigs, bids: updatedBids }
     }),
 
-  deleteGig: (gigId: string) =>
+  deleteGig: (gigId) =>
     set((state) => ({
       gigs: state.gigs.filter((gig) => gig.id !== gigId),
       bids: state.bids.filter((bid) => bid.gigId !== gigId),

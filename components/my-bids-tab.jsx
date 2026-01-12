@@ -1,7 +1,7 @@
 "use client"
 
-import { useAuthStore } from "@/lib/store"
-import { Card } from "@/components/ui/card"
+import { useAuthStore } from "../lib/store"
+import { Card } from "./ui/card"
 
 export function MyBidsTab() {
   const user = useAuthStore((state) => state.user)
@@ -13,7 +13,7 @@ export function MyBidsTab() {
   if (myBids.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-slate-400 text-lg">You haven't placed any bids yet</p>
+        <p className="text-gray-400 text-lg">You haven't placed any bids yet</p>
       </div>
     )
   }
@@ -23,14 +23,14 @@ export function MyBidsTab() {
       {myBids.map((bid) => {
         const gig = gigs.find((g) => g.id === bid.gigId)
         return (
-          <Card key={bid.id} className="p-6 bg-slate-900 border-slate-700">
+          <Card key={bid.id} className="p-6 premium-card">
             <div className="flex justify-between items-start mb-3">
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-white mb-1">{gig?.title}</h3>
-                <p className="text-slate-400 text-sm mb-2">
+                <p className="text-gray-400 text-sm mb-2">
                   Client: <span className="text-white">{gig?.clientName}</span>
                 </p>
-                <p className="text-slate-400 text-sm italic">"{bid.message}"</p>
+                <p className="text-gray-400 text-sm italic">"{bid.message}"</p>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-bold text-green-400">${bid.amount}</div>
@@ -48,7 +48,7 @@ export function MyBidsTab() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-700 text-xs text-slate-500">
+            <div className="pt-4 border-t border-gray-700/50 text-xs text-gray-500">
               Placed on {new Date(bid.createdAt).toLocaleDateString()}
             </div>
           </Card>
