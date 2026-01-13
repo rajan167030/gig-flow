@@ -1,30 +1,9 @@
+
+<img width="1921" height="880" alt="Screenshot 2026-01-13 155408" src="https://github.com/user-attachments/assets/b2dc753a-3174-46e5-8335-87c34ac33ce5" />
+
+
+
+
+
 # GigFlow freelance marketplace
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
-
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/rajanjha114430-gmailcoms-projects/v0-gig-flow-freelance-marketplace)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/l32o6gPN9HC)
-
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
-
-## Deployment
-
-Your project is live at:
-
-**[https://vercel.com/rajanjha114430-gmailcoms-projects/v0-gig-flow-freelance-marketplace](https://vercel.com/rajanjha114430-gmailcoms-projects/v0-gig-flow-freelance-marketplace)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/l32o6gPN9HC](https://v0.app/chat/l32o6gPN9HC)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
