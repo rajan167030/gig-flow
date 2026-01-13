@@ -673,9 +673,9 @@ Contributions are welcome! Please follow these steps:
 
 ## 📧 Support
 
-For support or questions, please contact: support@gigflow.com
+For support or questions, please contact: rajan.jha114430@gmail.com
 
 ---
 
-**Built with ❤️ by GigFlow Team**
+**Built with ❤️ by Rajan Jha**
 
