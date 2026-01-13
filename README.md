@@ -2,10 +2,11 @@
 
 <img width="1921" height="880" alt="Screenshot 2026-01-13 155408" src="https://github.com/user-attachments/assets/b2dc753a-3174-46e5-8335-87c34ac33ce5" />
 
-<img width="1921" height="874" alt="image" src="https://github.com/user-attachments/assets/c9601058-bf93-4628-b3f0-358dabd1c481" />
 
 
 
+
+<img width="1921" height="878" alt="Screenshot 2026-01-13 160038" src="https://github.com/user-attachments/assets/ddb07711-0f56-460e-aa9e-a657d1783835" />
 
 
 
