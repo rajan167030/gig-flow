@@ -365,5 +365,5 @@ export function UserProfileTab() {
         </div>
       </Card>
     </div>
-  )
-}
+  
+)}

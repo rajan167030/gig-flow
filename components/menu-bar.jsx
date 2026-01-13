@@ -23,11 +23,16 @@ import {
   FolderOpen,
   User,
   Bell,
+  UserCircle,
 } from "lucide-react"
+
+import { useState as useReactState } from "react"
+import { ProfileMenuCard } from "./profile-menu-card"
 
 export function MenuBar({ onNavigate, activeTab }) {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [hoveredItem, setHoveredItem] = useState(null)
+  const [showProfileMenu, setShowProfileMenu] = useReactState(false)
 
   const handleMenuClick = (tab) => {
     onNavigate?.(tab)
@@ -161,10 +166,14 @@ export function MenuBar({ onNavigate, activeTab }) {
         })}
       </nav>
 
-      {/* Bottom Section */}
+      {/* Bottom Section with Profile Icon */}
       <div className="absolute bottom-0 left-0 right-0 p-3 border-t border-gray-800/50">
         {!isCollapsed ? (
           <div className="space-y-2">
+            <button className="w-full flex items-center gap-3 px-3 py-2 text-gray-400 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors text-sm" onClick={() => setShowProfileMenu(true)}>
+              <UserCircle size={20} />
+              Profile
+            </button>
             <button className="w-full flex items-center gap-3 px-3 py-2 text-gray-400 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors text-sm">
               <HelpCircle size={18} />
               Help & Support
@@ -176,6 +185,9 @@ export function MenuBar({ onNavigate, activeTab }) {
           </div>
         ) : (
           <div className="flex flex-col items-center space-y-2">
+            <button className="p-2 text-gray-400 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors" onClick={() => setShowProfileMenu(true)}>
+              <UserCircle size={20} />
+            </button>
             <button className="p-2 text-gray-400 hover:text-white hover:bg-gray-800/50 rounded-lg transition-colors">
               <HelpCircle size={18} />
             </button>
@@ -185,6 +197,9 @@ export function MenuBar({ onNavigate, activeTab }) {
           </div>
         )}
       </div>
+
+      {/* Profile Card Modal */}
+      {showProfileMenu && <ProfileMenuCard onClose={() => setShowProfileMenu(false)} />}
     </div>
   )
 }
